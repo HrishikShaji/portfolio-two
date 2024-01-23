@@ -5,7 +5,7 @@ import { Skills } from "./Skills";
 
 export const Main = () => {
   return (
-    <div className=" flex flex-col">
+    <div className="w-full h-full flex flex-col">
       <Hero />
       <About />
       <Skills />

@@ -1,6 +1,7 @@
 export type BoxObj = {
 	color: string;
 	data?: any;
+	flexDirection?: string;
 };
 
 interface LoopProps {
@@ -21,16 +22,19 @@ export const Loop: React.FC<LoopProps> = ({
 }) => {
 	return (
 		<div
-			className="box w-full h-full rounded-xl"
+			className="box relative w-full h-full rounded-xl flex"
 			style={{
 				backgroundColor: boxes[number].color,
 				paddingTop: paddingTop,
 				paddingLeft: paddingLeft,
 				paddingRight: paddingRight,
 				paddingBottom: paddingBottom,
+				flexDirection: boxes[number]?.flexDirection
+					? boxes[number].flexDirection
+					: "row",
+				gap: "20px",
 			}}
 		>
-			{boxes[number].data ? boxes[number].data : null}
 			{number > 0 ? (
 				<Loop
 					boxes={boxes}
@@ -41,6 +45,7 @@ export const Loop: React.FC<LoopProps> = ({
 					paddingBottom={paddingBottom}
 				/>
 			) : null}
+			{boxes[number].data ? boxes[number].data : null}
 		</div>
 	);
 };

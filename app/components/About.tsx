@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import { BoxObj, Loop } from "./Loop";
 import { useMount } from "../hooks/useMount";
 import { loopAnimation } from "../lib/utils";
+import { VerticalBar } from "./VerticalBar";
 
 const boxes: BoxObj[] = [
   { color: "hsl(0,0%,20%)", data: "About ME" },
-  { color: "hsl(0,0%,40%)" },
+  { color: "hsl(0,0%,40%)", flexDirection: "row", data: <VerticalBar /> },
   { color: "hsl(0,0%,50%)" },
   { color: "hsl(0,0%,60%)" },
 ];
