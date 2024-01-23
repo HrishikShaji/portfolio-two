@@ -1,6 +1,19 @@
 "use client";
 import gsap from "gsap";
 import { useEffect, useState } from "react";
+import { cn } from "../lib/utils";
+
+const colors = [
+	"hsl(0,0%,10%)",
+	"hsl(0,0%,20%)",
+	"hsl(0,0%,30%)",
+	"hsl(0,0%,40%)",
+	"hsl(0,0%,50%)",
+	"hsl(0,0%,60%)",
+	"hsl(0,0%,70%)",
+	"hsl(0,0%,80%)",
+	"hsl(0,0%,90%)",
+];
 
 interface LoopProps {
 	number: number;
@@ -8,7 +21,8 @@ interface LoopProps {
 const Loop: React.FC<LoopProps> = ({ number }) => {
 	return (
 		<div
-			className={`box bg-neutral-900 border-white border-4  w-full h-full pl-20 py-10 pr-5`}
+			className="box  bg-neutral-900   w-full h-full pl-20 py-10 pr-5"
+			style={{ backgroundColor: colors[number] }}
 		>
 			{number > 0 ? <Loop number={number - 1} /> : null}
 		</div>
