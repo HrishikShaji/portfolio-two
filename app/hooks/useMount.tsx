@@ -2,10 +2,10 @@
 import { useEffect, useState } from "react";
 
 export const useMount = () => {
-  const [isMounted, setIsMounted] = useState(false);
+	const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-  return { isMounted };
+	useEffect(() => {
+		setIsMounted(true);
+	}, []);
+	return { isMounted };
 };
