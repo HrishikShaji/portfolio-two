@@ -3,15 +3,14 @@ import gsap from "gsap";
 import { useEffect, useState } from "react";
 import { BoxObj, Loop } from "./Loop";
 import { useMount } from "../hooks/useMount";
+import { Main } from "./Main";
 
 const boxes: BoxObj[] = [
-	{ color: "hsl(0,0%,20%)", data: "About ME" },
-	{ color: "hsl(0,0%,40%)" },
-	{ color: "hsl(0,0%,50%)" },
-	{ color: "hsl(0,0%,60%)" },
+	{ color: "hsl(0,0%,70%)", data: <Main /> },
+	{ color: "hsl(0,0%,80%)" },
+	{ color: "hsl(0,0%,90%)" },
 ];
-
-export const About = () => {
+export const Wrapper = () => {
 	const { isMounted } = useMount();
 	useEffect(() => {
 		if (isMounted) {
@@ -32,14 +31,14 @@ export const About = () => {
 	}, [isMounted]);
 
 	return (
-		<div className="h-screen w-full ">
+		<div className="h-full w-full ">
 			<Loop
-				number={3}
+				number={2}
 				boxes={boxes}
-				paddingTop="20px"
+				paddingTop="40px"
 				paddingBottom="40px"
 				paddingLeft="20px"
-				paddingRight="140px"
+				paddingRight="20px"
 			/>
 		</div>
 	);
