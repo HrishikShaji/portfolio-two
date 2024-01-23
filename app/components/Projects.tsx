@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import { BoxObj, Loop } from "./Loop";
 import { useMount } from "../hooks/useMount";
 import { Skill } from "./Skill";
+import { ProjectContainer } from "./ProjectContainer";
 
 const boxes: BoxObj[] = [
-	{ color: "hsl(0,0%,10%)" },
+	{ color: "hsl(0,0%,10%)", data: <ProjectContainer /> },
 	{ color: "hsl(0,0%,20%)" },
 	{ color: "hsl(0,0%,30%)" },
 	{ color: "hsl(0,0%,40%)" },
@@ -17,7 +18,7 @@ const boxes: BoxObj[] = [
 	{ color: "hsl(0,0%,90%)" },
 ];
 
-export const Skills = () => {
+export const Projects = () => {
 	const { isMounted } = useMount();
 	useEffect(() => {
 		if (isMounted) {
@@ -38,9 +39,9 @@ export const Skills = () => {
 	}, [isMounted]);
 
 	return (
-		<div className="h-screen w-full ">
+		<div className="h-full w-full ">
 			<Loop
-				number={4}
+				number={3}
 				boxes={boxes}
 				paddingTop="20px"
 				paddingBottom="40px"

@@ -17,7 +17,7 @@ const boxes: BoxObj[] = [
 	{ color: "hsl(0,0%,90%)" },
 ];
 
-export const Skills = () => {
+export const ProjectCard = () => {
 	const { isMounted } = useMount();
 	useEffect(() => {
 		if (isMounted) {
@@ -38,9 +38,9 @@ export const Skills = () => {
 	}, [isMounted]);
 
 	return (
-		<div className="h-screen w-full ">
+		<div className="h-full w-full ">
 			<Loop
-				number={4}
+				number={1}
 				boxes={boxes}
 				paddingTop="20px"
 				paddingBottom="40px"
