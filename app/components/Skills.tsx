@@ -3,9 +3,10 @@ import gsap from "gsap";
 import { useEffect, useState } from "react";
 import { BoxObj, Loop } from "./Loop";
 import { useMount } from "../hooks/useMount";
+import { Skill } from "./Skill";
 
 const boxes: BoxObj[] = [
-	{ color: "hsl(0,0%,10%)", data: "Hi, I'm HRISHIK" },
+	{ color: "hsl(0,0%,10%)", data: <Skill /> },
 	{ color: "hsl(0,0%,20%)" },
 	{ color: "hsl(0,0%,30%)" },
 	{ color: "hsl(0,0%,40%)" },
@@ -16,7 +17,7 @@ const boxes: BoxObj[] = [
 	{ color: "hsl(0,0%,90%)" },
 ];
 
-export const Hero = () => {
+export const Skills = () => {
 	const { isMounted } = useMount();
 	useEffect(() => {
 		if (isMounted) {
@@ -39,9 +40,9 @@ export const Hero = () => {
 	return (
 		<div className="h-screen w-full ">
 			<Loop
-				number={7}
+				number={4}
 				boxes={boxes}
-				paddingTop="40px"
+				paddingTop="20px"
 				paddingBottom="40px"
 				paddingLeft="20px"
 				paddingRight="20px"

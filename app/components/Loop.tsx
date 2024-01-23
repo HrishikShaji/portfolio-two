@@ -1,6 +1,11 @@
+export type BoxObj = {
+	color: string;
+	data?: any;
+};
+
 interface LoopProps {
 	number: number;
-	colors: string[];
+	boxes: BoxObj[];
 	paddingTop: string;
 	paddingBottom: string;
 	paddingRight: string;
@@ -8,7 +13,7 @@ interface LoopProps {
 }
 export const Loop: React.FC<LoopProps> = ({
 	number,
-	colors,
+	boxes,
 	paddingTop,
 	paddingLeft,
 	paddingRight,
@@ -16,18 +21,19 @@ export const Loop: React.FC<LoopProps> = ({
 }) => {
 	return (
 		<div
-			className="box w-full h-full"
+			className="box w-full h-full rounded-xl"
 			style={{
-				backgroundColor: colors[number],
+				backgroundColor: boxes[number].color,
 				paddingTop: paddingTop,
 				paddingLeft: paddingLeft,
 				paddingRight: paddingRight,
 				paddingBottom: paddingBottom,
 			}}
 		>
+			{boxes[number].data ? boxes[number].data : null}
 			{number > 0 ? (
 				<Loop
-					colors={colors}
+					boxes={boxes}
 					number={number - 1}
 					paddingTop={paddingTop}
 					paddingLeft={paddingLeft}
