@@ -16,7 +16,7 @@ const colors = [
   "hsl(0,0%,90%)",
 ];
 
-export const Hero = () => {
+export const About = () => {
   const { isMounted } = useMount();
   useEffect(() => {
     if (isMounted) {
@@ -39,12 +39,12 @@ export const Hero = () => {
   return (
     <div className="h-screen w-full ">
       <Loop
-        number={7}
+        number={5}
         colors={colors}
-        paddingTop="40px"
+        paddingTop="20px"
         paddingBottom="40px"
-        paddingLeft="80px"
-        paddingRight="20px"
+        paddingLeft="20px"
+        paddingRight="140px"
       />
     </div>
   );
