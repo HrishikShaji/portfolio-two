@@ -5,31 +5,32 @@ import { useMount } from "../hooks/useMount";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
-export const VerticalBar = () => {
+export const HorizontalBar = () => {
 	const { isMounted } = useMount();
 	useEffect(() => {
 		gsap.registerPlugin(ScrollTrigger);
 
 		if (isMounted) {
-			const verticals = document.querySelectorAll(".vertical");
-			verticals.forEach((element) => {
+			const horizontals = document.querySelectorAll(".horizontal");
+			horizontals.forEach((element) => {
 				gsap.fromTo(
 					element,
-					{ scaleY: 0 },
+					{ scaleX: 0 },
 					{
-						scaleY: 1,
-						transformOrigin: "top",
+						scaleX: 1,
+						transformOrigin: "left",
 						scrollTrigger: {
 							trigger: element,
 							start: "top 80%",
 							end: "top 20%",
 							scrub: 3,
-							markers: true,
 						},
 					},
 				);
 			});
 		}
 	}, [isMounted]);
-	return <div className="vertical box w-10 rounded-md  h-full bg-black"></div>;
+	return (
+		<div className="horizontal box w-full h-10 rounded-md   bg-black"></div>
+	);
 };
