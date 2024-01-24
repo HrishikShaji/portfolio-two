@@ -8,9 +8,9 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 const boxes: BoxObj[] = [
-	{ color: "hsl(0,0%,70%)", data: <Main /> },
-	{ color: "hsl(0,0%,80%)" },
-	{ color: "hsl(0,0%,90%)" },
+	{ color: "hsl(0,0%,10%)", data: <Main /> },
+	{ color: "hsl(0,0%,20%)" },
+	{ color: "hsl(0,0%,30%)" },
 ];
 export const Wrapper = () => {
 	const { isMounted } = useMount();

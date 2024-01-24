@@ -9,16 +9,23 @@ import { HorizontalBar } from "./HorizontalBar";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { Heading } from "./Heading";
 
+const aboutColors: BoxObj[] = [
+	{ color: "#d042f8" },
+	{ color: "hsl(0,0%,10%)" },
+	{ color: "#d042f8" },
+	{ color: "hsl(0,0%,10%)" },
+	{ color: "#d042f8" },
+];
 const boxes: BoxObj[] = [
-	{ color: "hsl(0,0%,20%)" },
-	{ color: "hsl(0,0%,30%)" },
-	{ color: "hsl(0,0%,40%)" },
-	{ color: "hsl(0,0%,50%)" },
+	{ color: "hsl(0,0%,10%)" },
+	{ color: "#0ce161" },
+	{ color: "hsl(0,0%,10%)" },
+	{ color: " #0ce161" },
 	{
-		color: "hsl(0,0%,60%)",
+		color: "hsl(0,0%,10%)",
 		data: (
 			<div className="absolute w-[900px] top-0 right-0">
-				<Heading name="skills" origin="right" />
+				<Heading colors={aboutColors} name="skills" origin="right" />
 			</div>
 		),
 	},

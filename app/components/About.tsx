@@ -9,11 +9,11 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 const boxes: BoxObj[] = [
 	{ color: "hsl(0,0%,10%)", data: "About ME" },
-	{ color: "hsl(0,0%,20%)" },
-	{ color: "hsl(0,0%,30%)" },
-	{ color: "hsl(0,0%,40%)" },
-	{ color: "hsl(0,0%,50%)" },
-	{ color: "hsl(0,0%,60%)" },
+	{ color: "#d042f8" },
+	{ color: "hsl(0,0%,10%)" },
+	{ color: "#d042f8" },
+	{ color: "hsl(0,0%,10%)" },
+	{ color: "#d042f8" },
 ];
 
 export const About = () => {

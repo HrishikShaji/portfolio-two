@@ -19,9 +19,10 @@ const boxes: BoxObj[] = [
 interface HeadingProps {
 	origin: string;
 	name: string;
+	colors: BoxObj[];
 }
 
-export const Heading: React.FC<HeadingProps> = ({ origin, name }) => {
+export const Heading: React.FC<HeadingProps> = ({ origin, name, colors }) => {
 	const { isMounted } = useMount();
 	useEffect(() => {
 		gsap.registerPlugin(ScrollTrigger);
@@ -55,7 +56,7 @@ export const Heading: React.FC<HeadingProps> = ({ origin, name }) => {
 			<Loop
 				boxName={`${name}-heading`}
 				number={3}
-				boxes={boxes}
+				boxes={colors}
 				paddingTop="20px"
 				paddingBottom="20px"
 				paddingLeft="20px"

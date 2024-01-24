@@ -5,9 +5,9 @@ import { Projects } from "./components/Projects";
 import { Wrapper } from "./components/Wrapper";
 
 export default function Home() {
-  return (
-    <main className="p-5">
-      <Wrapper />
-    </main>
-  );
+	return (
+		<main className="p-5 bg-black">
+			<Wrapper />
+		</main>
+	);
 }

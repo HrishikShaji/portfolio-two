@@ -3,9 +3,17 @@ import { Contact } from "./Contact";
 import { Feature } from "./Feature";
 import { Heading } from "./Heading";
 import { Hero } from "./Hero";
+import { BoxObj } from "./Loop";
 import { ProjectCard } from "./ProjectCard";
 import { Skills } from "./Skills";
 
+export const aboutColors: BoxObj[] = [
+	{ color: "#d042f8" },
+	{ color: "hsl(0,0%,10%)" },
+	{ color: "#d042f8" },
+	{ color: "hsl(0,0%,10%)" },
+	{ color: "#d042f8" },
+];
 export const Main = () => {
 	return (
 		<div className="w-full relative h-full  flex flex-col gap-10">
@@ -16,7 +24,7 @@ export const Main = () => {
 			<Hero />
 			<div className="relative">
 				<div className="absolute top-0 z-10 left-0 h-[300px] w-[900px]">
-					<Heading origin="left" name="about" />
+					<Heading origin="left" name="about" colors={aboutColors} />
 				</div>
 				<About />
 			</div>
@@ -29,7 +37,7 @@ export const Main = () => {
 			</div>
 			<Skills />
 			<div className="flex flex-col gap-5 w-full">
-				<Heading origin="left" name="project" />
+				<Heading origin="left" name="project" colors={aboutColors} />
 				{Array.from({ length: 5 }).map((_, i) => (
 					<ProjectCard key={i} />
 				))}

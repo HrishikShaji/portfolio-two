@@ -8,11 +8,9 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 const boxes: BoxObj[] = [
 	{ color: "hsl(0,0%,10%)", data: "Hi, I'm HRISHIK" },
-	{ color: "hsl(0,0%,20%)" },
-	{
-		color: "hsl(0,0%,30%)",
-	},
-	{ color: "hsl(0,0%,40%)" },
+	{ color: "#ed0404" },
+	{ color: "hsl(0,0%,10%)" },
+	{ color: "#ed0404" },
 ];
 
 export const Hero = () => {
@@ -37,7 +35,6 @@ export const Hero = () => {
 							start: "top bottom",
 							end: "top 20%",
 							scrub: 2,
-							markers: true,
 						},
 					},
 				);
