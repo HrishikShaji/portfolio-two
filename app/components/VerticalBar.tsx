@@ -24,7 +24,6 @@ export const VerticalBar = () => {
 							start: "top 80%",
 							end: "top 20%",
 							scrub: 3,
-							markers: true,
 						},
 					},
 				);
