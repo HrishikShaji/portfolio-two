@@ -3,39 +3,37 @@ import gsap from "gsap";
 import { useEffect, useState } from "react";
 import { BoxObj, Loop } from "./Loop";
 import { useMount } from "../hooks/useMount";
-import { Skill } from "./Skill";
 import { loopAnimation } from "../lib/utils";
+import { VerticalBar } from "./VerticalBar";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 const boxes: BoxObj[] = [
-  { color: "hsl(0,0%,10%)" },
+  { color: "hsl(0,0%,10%)", data: "Contact ME" },
   { color: "hsl(0,0%,20%)" },
   { color: "hsl(0,0%,30%)" },
   { color: "hsl(0,0%,40%)" },
   { color: "hsl(0,0%,50%)" },
   { color: "hsl(0,0%,60%)" },
-  { color: "hsl(0,0%,70%)" },
-  { color: "hsl(0,0%,80%)" },
-  { color: "hsl(0,0%,90%)" },
 ];
 
-export const ProjectCard = () => {
+export const Contact = () => {
   const { isMounted } = useMount();
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     if (isMounted) {
-      const boxes = document.querySelectorAll(".project-box");
+      const boxes = document.querySelectorAll(".contact-box");
+      const container = document.querySelector(".contact-container");
       boxes.forEach((element) => {
         gsap.fromTo(
           element,
           {
-            scaleX: 0.25,
-            transformOrigin: "left",
+            scale: 0.75,
+            transformOrigin: "bottom",
           },
           {
-            scaleX: 1,
+            scale: 1,
             scrollTrigger: {
-              trigger: element,
+              trigger: container,
               start: "top 80%",
               end: "top 20%",
               scrub: 2,
@@ -49,10 +47,10 @@ export const ProjectCard = () => {
   }, [isMounted]);
 
   return (
-    <div className="h-full w-full ">
+    <div className="contact-container h-screen w-full ">
       <Loop
-        boxName="project"
-        number={1}
+        boxName="contact"
+        number={5}
         boxes={boxes}
         paddingTop="20px"
         paddingBottom="40px"

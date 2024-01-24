@@ -1,7 +1,8 @@
 import { About } from "./About";
+import { Contact } from "./Contact";
 import { Feature } from "./Feature";
 import { Hero } from "./Hero";
-import { Projects } from "./Projects";
+import { ProjectCard } from "./ProjectCard";
 import { Skills } from "./Skills";
 
 export const Main = () => {
@@ -10,13 +11,18 @@ export const Main = () => {
 			<Hero />
 			<About />
 
-			<div className="flex gap-2">
+			<div className="flex gap-10">
 				{Array.from({ length: 3 }).map((_, i) => (
 					<Feature key={i} />
 				))}
 			</div>
 			<Skills />
-			<Projects />
+			<div className="flex flex-col gap-5">
+				{Array.from({ length: 5 }).map((_, i) => (
+					<ProjectCard key={i} />
+				))}
+			</div>
+			<Contact />
 		</div>
 	);
 };
