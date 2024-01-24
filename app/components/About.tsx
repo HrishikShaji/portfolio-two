@@ -27,7 +27,7 @@ export const About = () => {
 					element,
 					{
 						scale: 0.75,
-						transformOrigin: "left",
+						transformOrigin: "top right",
 					},
 					{
 						scale: 1,
