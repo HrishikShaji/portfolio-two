@@ -4,12 +4,12 @@ import { Projects } from "./Projects";
 import { Skills } from "./Skills";
 
 export const Main = () => {
-  return (
-    <div className="w-full h-full flex flex-col">
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-    </div>
-  );
+	return (
+		<div className="w-full h-full flex flex-col gap-10">
+			<Hero />
+			<About />
+			<Skills />
+			<Projects />
+		</div>
+	);
 };
