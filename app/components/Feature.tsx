@@ -46,7 +46,7 @@ export const Feature = () => {
   }, [isMounted]);
 
   return (
-    <div className="h-screen w-full ">
+    <div className="h-full w-full ">
       <Loop
         boxName="feature"
         number={4}

@@ -7,35 +7,27 @@ import { Skill } from "./Skill";
 import { loopAnimation } from "../lib/utils";
 import { HorizontalBar } from "./HorizontalBar";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { Heading } from "./Heading";
 
 const boxes: BoxObj[] = [
   { color: "hsl(0,0%,20%)" },
   { color: "hsl(0,0%,30%)" },
   { color: "hsl(0,0%,40%)" },
   { color: "hsl(0,0%,50%)" },
-  {
-    color: "hsl(0,0%,60%)",
-    data: (
-      <div className="absolute w-[900px] top-0 right-0">
-        <Heading />
-      </div>
-    ),
-  },
+  { color: "hsl(0,0%,60%)" },
 ];
 
-export const Skills = () => {
+export const Heading = () => {
   const { isMounted } = useMount();
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     if (isMounted) {
-      const boxes = document.querySelectorAll(".skills-box");
+      const boxes = document.querySelectorAll(".heading-box");
       boxes.forEach((element) => {
         gsap.fromTo(
           element,
           {
             scale: 0.75,
-            transformOrigin: "top right",
+            transformOrigin: "top left,",
           },
           {
             scale: 1,
@@ -54,10 +46,10 @@ export const Skills = () => {
   }, [isMounted]);
 
   return (
-    <div className="h-screen w-full ">
+    <div className="h-full w-full ">
       <Loop
-        boxName="skills"
-        number={4}
+        boxName="heading"
+        number={3}
         boxes={boxes}
         paddingTop="20px"
         paddingBottom="20px"
