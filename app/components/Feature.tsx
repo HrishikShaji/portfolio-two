@@ -23,7 +23,7 @@ export const Feature: React.FC<FeatureProps> = ({ item }) => {
 					to={{ scaleY: 0 }}
 					color="red"
 					origin="bottom"
-					name="feature"
+					name={item.id}
 				>
 					<h1 className="text-white">{item.title}</h1>
 				</Content>
