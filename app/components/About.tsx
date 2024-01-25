@@ -6,9 +6,14 @@ import { useMount } from "../hooks/useMount";
 import { loopAnimation } from "../lib/utils";
 import { VerticalBar } from "./VerticalBar";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { data } from "../lib/data";
+import { AboutDesc } from "./AboutDesc";
 
 const boxes: BoxObj[] = [
-	{ color: "hsl(0,0%,10%)", data: "About ME" },
+	{
+		color: "hsl(0,0%,10%)",
+		data: <AboutDesc />,
+	},
 	{ color: "#d042f8" },
 	{ color: "hsl(0,0%,10%)" },
 	{ color: "#d042f8" },
