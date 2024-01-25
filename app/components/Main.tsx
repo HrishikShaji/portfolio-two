@@ -1,3 +1,5 @@
+import { data } from "../lib/data";
+import { aboutColors, aboutHeadingColors } from "../lib/loopItems";
 import { About } from "./About";
 import { AboutHeading } from "./AboutHeading";
 import { Contact } from "./Contact";
@@ -8,21 +10,8 @@ import { BoxObj } from "./Loop";
 import { LoopBox } from "./LoopBox";
 import { ProjectCard } from "./ProjectCard";
 import { Skills } from "./Skills";
+import { Title } from "./Title";
 
-export const aboutColors: BoxObj[] = [
-  { color: "#d042f8" },
-  { color: "hsl(0,0%,10%)" },
-  { color: "#d042f8" },
-  { color: "hsl(0,0%,10%)" },
-  { color: "#d042f8" },
-];
-export const aboutHeadingColors: BoxObj[] = [
-  { color: "#d042f8", data: <AboutHeading /> },
-  { color: "hsl(0,0%,10%)" },
-  { color: "#d042f8" },
-  { color: "hsl(0,0%,10%)" },
-  { color: "#d042f8" },
-];
 export const Main = () => {
   return (
     <div className="w-full relative h-full  flex flex-col gap-10">
