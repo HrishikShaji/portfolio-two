@@ -7,18 +7,36 @@ import { Skill } from "./Skill";
 import { loopAnimation } from "../lib/utils";
 import { HorizontalBar } from "./HorizontalBar";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { Content } from "./Content";
 
-const boxes: BoxObj[] = [
-	{ color: "hsl(0,0%,10%)" },
-	{ color: "#2edbef" },
-	{ color: "hsl(0,0%,10%)" },
-	{ color: "#2edbef" },
-	{ color: "hsl(0,0%,10%)" },
-];
+interface FeatureProps {
+	item: Record<string, any>;
+}
 
-export const Feature = () => {
+export const Feature: React.FC<FeatureProps> = ({ item }) => {
+	const featuresContent: BoxObj[] = [
+		{
+			color: "hsl(0,0%,10%)",
+			data: (
+				<Content
+					from={{ scaleY: 1 }}
+					to={{ scaleY: 0 }}
+					color="red"
+					origin="bottom"
+					name="feature"
+				>
+					<h1 className="text-white">{item.title}</h1>
+				</Content>
+			),
+		},
+		{ color: "#2edbef" },
+		{ color: "hsl(0,0%,10%)" },
+		{ color: "#2edbef" },
+		{ color: "hsl(0,0%,10%)" },
+	];
 	const { isMounted } = useMount();
 	useEffect(() => {
+		console.log(item.title);
 		gsap.registerPlugin(ScrollTrigger);
 		if (isMounted) {
 			const boxes = document.querySelectorAll(".feature-box");
@@ -50,7 +68,7 @@ export const Feature = () => {
 			<Loop
 				boxName="feature"
 				number={4}
-				boxes={boxes}
+				boxes={featuresContent}
 				paddingTop="20px"
 				paddingBottom="20px"
 				paddingLeft="20px"
