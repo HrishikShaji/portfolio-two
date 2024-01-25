@@ -4,6 +4,7 @@ import { Feature } from "./Feature";
 import { Heading } from "./Heading";
 import { Hero } from "./Hero";
 import { BoxObj } from "./Loop";
+import { LoopBox } from "./LoopBox";
 import { ProjectCard } from "./ProjectCard";
 import { Skills } from "./Skills";
 
@@ -28,8 +29,9 @@ export const Main = () => {
 				</div>
 				<About />
 			</div>
-			<div className="relative flex justify-center ">
-				<div className="flex  h-[600px] w-full">
+			<div className="relative flex h-[600px] justify-center ">
+				<LoopBox name="feature" />
+				<div className="flex  absolute z-10 h-full w-full">
 					{Array.from({ length: 3 }).map((_, i) => (
 						<Feature key={i} />
 					))}
