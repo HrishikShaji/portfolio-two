@@ -5,17 +5,17 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { loopAnimation } from "../lib/utils";
 
-export const AboutDesc = () => {
+export const AboutHeading = () => {
   const { isMounted } = useMount();
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     if (isMounted) {
-      const desc = document.querySelector(".about-desc");
+      const desc = document.querySelector(".about-heading");
       gsap.fromTo(
         desc,
         {
           scaleX: 1,
-          transformOrigin: "right",
+          transformOrigin: "left",
         },
         {
           scaleX: 0,
@@ -35,10 +35,10 @@ export const AboutDesc = () => {
   return (
     <div className=" text-white h-full w-full relative flex items-end">
       <div
-        style={{ backgroundColor: "black" }}
-        className=" absolute z-10 w-full rounded-md h-full about-desc "
+        style={{ backgroundColor: "#d042f8" }}
+        className=" absolute z-10 w-full rounded-md h-full about-heading "
       />
-      <p>{data.about.description}</p>
+      <p className="text-white text-3xl font-semibold">{data.about.title}</p>
     </div>
   );
 };
