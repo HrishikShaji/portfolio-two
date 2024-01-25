@@ -6,36 +6,54 @@ import { useMount } from "../hooks/useMount";
 import { Skill } from "./Skill";
 import { loopAnimation } from "../lib/utils";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { Content } from "./Content";
+import Image from "next/image";
 
-const boxes: BoxObj[] = [
-	{ color: "hsl(0,0%,10%)" },
-	{ color: "#f03daf" },
-	{ color: "hsl(0,0%,30%)" },
-	{ color: "hsl(0,0%,40%)" },
-	{ color: "hsl(0,0%,50%)" },
-	{ color: "hsl(0,0%,60%)" },
-	{ color: "hsl(0,0%,70%)" },
-	{ color: "hsl(0,0%,80%)" },
-	{ color: "hsl(0,0%,90%)" },
-];
+interface ProjectCardProps {
+	item: Record<string, any>;
+}
 
-export const ProjectCard = () => {
+export const ProjectCard: React.FC<ProjectCardProps> = ({ item }) => {
+	const boxes: BoxObj[] = [
+		{
+			color: "hsl(0,0%,10%)",
+			data: (
+				<Content
+					from={{ scaleY: 1 }}
+					to={{ scaleY: 0 }}
+					color="black"
+					origin="top"
+					name={item.id}
+				>
+					<Image
+						src={item.img}
+						alt="image"
+						height={1000}
+						width={1000}
+						className="w-full h-full object-cover"
+					/>
+				</Content>
+			),
+		},
+		{ color: "#f03daf" },
+	];
 	const { isMounted } = useMount();
 	useEffect(() => {
 		gsap.registerPlugin(ScrollTrigger);
 		if (isMounted) {
 			const boxes = document.querySelectorAll(".project-box");
+			const container = document.querySelector(".project-card");
 			boxes.forEach((element) => {
 				gsap.fromTo(
 					element,
 					{
-						scaleX: 0.25,
-						transformOrigin: "left",
+						scale: 0.25,
+						transformOrigin: "center",
 					},
 					{
-						scaleX: 1,
+						scale: 1,
 						scrollTrigger: {
-							trigger: element,
+							trigger: container,
 							start: "top 80%",
 							end: "top 20%",
 							scrub: 2,
@@ -49,7 +67,7 @@ export const ProjectCard = () => {
 	}, [isMounted]);
 
 	return (
-		<div className="h-full w-full ">
+		<div className="h-[300px] w-full project-card">
 			<Loop
 				boxName="project"
 				number={1}
