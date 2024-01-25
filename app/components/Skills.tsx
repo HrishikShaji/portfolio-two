@@ -1,6 +1,6 @@
 "use client";
 import gsap from "gsap";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { BoxObj, Loop } from "./Loop";
 import { useMount } from "../hooks/useMount";
 import { loopAnimation } from "../lib/utils";
@@ -48,7 +48,7 @@ const boxes: BoxObj[] = [
 
 export const Skills = () => {
 	const { isMounted } = useMount();
-	useEffect(() => {
+	useLayoutEffect(() => {
 		gsap.registerPlugin(ScrollTrigger);
 		if (isMounted) {
 			const boxes = document.querySelectorAll(".skills-box");

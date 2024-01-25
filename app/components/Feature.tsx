@@ -1,6 +1,6 @@
 "use client";
 import gsap from "gsap";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { BoxObj, Loop } from "./Loop";
 import { useMount } from "../hooks/useMount";
 import { Skill } from "./Skill";
@@ -35,8 +35,7 @@ export const Feature: React.FC<FeatureProps> = ({ item }) => {
 		{ color: "hsl(0,0%,10%)" },
 	];
 	const { isMounted } = useMount();
-	useEffect(() => {
-		console.log(item.title);
+	useLayoutEffect(() => {
 		gsap.registerPlugin(ScrollTrigger);
 		if (isMounted) {
 			const boxes = document.querySelectorAll(".feature-box");

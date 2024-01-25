@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { BoxObj, Loop } from "./Loop";
 import { useMount } from "../hooks/useMount";
 import { Main } from "./Main";
@@ -14,7 +14,7 @@ const boxes: BoxObj[] = [
 ];
 export const Wrapper = () => {
 	const { isMounted } = useMount();
-	useEffect(() => {
+	useLayoutEffect(() => {
 		gsap.registerPlugin(ScrollTrigger);
 		if (isMounted) {
 			const boxes = document.querySelectorAll(".wrapper-bo");

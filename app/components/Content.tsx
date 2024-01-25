@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useLayoutEffect, useRef } from "react";
 import { useMount } from "../hooks/useMount";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
@@ -22,13 +22,13 @@ export const Content: React.FC<ContentProps> = ({
 	to,
 }) => {
 	const { isMounted } = useMount();
-	useEffect(() => {
+	const ref = useRef<HTMLDivElement>(null);
+
+	useLayoutEffect(() => {
 		gsap.registerPlugin(ScrollTrigger);
-		if (isMounted) {
-			const desc = document.querySelector(`.content${name}`);
-			console.log("name is", name);
+		if (isMounted && ref.current) {
 			gsap.fromTo(
-				desc,
+				ref.current,
 				{
 					...from,
 					transformOrigin: origin,
@@ -36,9 +36,9 @@ export const Content: React.FC<ContentProps> = ({
 				{
 					...to,
 					scrollTrigger: {
-						trigger: desc,
-						start: "top center",
-						end: "top 20%",
+						trigger: ref.current,
+						start: "top 75%",
+						end: "top 25%",
 						scrub: 2,
 						markers: true,
 					},
@@ -47,10 +47,12 @@ export const Content: React.FC<ContentProps> = ({
 				window.addEventListener("mousemove", loopAnimation);
 		}
 		return () => window.removeEventListener("mousemove", loopAnimation);
-	}, [isMounted]);
+	}, [isMounted, ref.current]);
 	return (
 		<div className=" text-white h-full w-full relative flex items-end">
 			<div
+				ref={ref}
+				id={`content-${name}`}
 				style={{ backgroundColor: color }}
 				className={` absolute z-10 w-full rounded-md h-full content${name} `}
 			/>
