@@ -37,7 +37,6 @@ export const Feature: React.FC<FeatureProps> = ({ item }) => {
   useLoop({ isMounted: isMounted });
 
   useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
     const boxes = document.querySelectorAll(".feature-box");
     boxes.forEach((element) => {
       gsap.fromTo(

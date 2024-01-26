@@ -20,7 +20,6 @@ export const Contact = () => {
   useLoop({ isMounted: isMounted });
 
   useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
     const boxes = document.querySelectorAll(".contact-box");
     const container = document.querySelector(".contact-container");
     boxes.forEach((element) => {

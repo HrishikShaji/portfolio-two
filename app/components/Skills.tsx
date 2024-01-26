@@ -55,7 +55,6 @@ export const Skills = () => {
   useLoop({ isMounted: isMounted });
 
   useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
     const boxes = document.querySelectorAll(".skills-box");
     boxes.forEach((element) => {
       gsap.fromTo(

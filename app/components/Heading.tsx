@@ -17,7 +17,6 @@ export const Heading: React.FC<HeadingProps> = ({ origin, name, colors }) => {
   useLoop({ isMounted: isMounted });
 
   useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
     const boxes = document.querySelectorAll(`.${name}-heading-box`);
     boxes.forEach((element) => {
       gsap.fromTo(

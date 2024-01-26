@@ -26,8 +26,6 @@ export const Content: React.FC<ContentProps> = ({
   const ref = useRef<HTMLDivElement>(null);
   useLoop({ isMounted: isMounted });
   useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
     gsap.fromTo(
       ref.current,
       {

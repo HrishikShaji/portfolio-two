@@ -18,7 +18,6 @@ export const Hero = () => {
   useLoop({ isMounted: isMounted });
 
   useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
     const boxes = document.querySelectorAll(".hero-box");
     const container = document.querySelector(".hero-container");
     boxes.forEach((element) => {

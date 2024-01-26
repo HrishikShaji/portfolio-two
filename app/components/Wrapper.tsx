@@ -16,7 +16,6 @@ export const Wrapper = () => {
   const { isMounted } = useMount();
   useLoop({ isMounted: isMounted });
   useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
     const boxes = document.querySelectorAll(".wrapper-bo");
     boxes.forEach((element) => {
       gsap.fromTo(

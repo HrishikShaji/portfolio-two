@@ -15,7 +15,6 @@ export const Title: React.FC<TitleProps> = ({ name, color, origin, title }) => {
   const { isMounted } = useMount();
   useLoop({ isMounted: isMounted });
   useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
     const desc = document.querySelector(`.${name}-title`);
     gsap.fromTo(
       desc,

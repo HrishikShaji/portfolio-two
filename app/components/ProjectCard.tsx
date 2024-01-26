@@ -41,7 +41,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ item }) => {
   useLoop({ isMounted: isMounted });
 
   useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
     const boxes = document.querySelectorAll(".project-box");
     const container = document.querySelector(".project-card");
     boxes.forEach((element) => {
