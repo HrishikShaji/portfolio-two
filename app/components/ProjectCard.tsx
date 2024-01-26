@@ -1,12 +1,12 @@
 "use client";
 import gsap from "gsap";
-import { useLayoutEffect } from "react";
 import { BoxObj, Loop } from "./Loop";
 import { useMount } from "../hooks/useMount";
-import { loopAnimation } from "../lib/utils";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { Content } from "./Content";
 import Image from "next/image";
+import { useLoop } from "../hooks/useLoop";
+import { useGSAP } from "@gsap/react";
 
 interface ProjectCardProps {
   item: Record<string, any>;
@@ -38,33 +38,31 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ item }) => {
     { color: "#f03daf", flexDirection: "row" },
   ];
   const { isMounted } = useMount();
-  useLayoutEffect(() => {
+  useLoop({ isMounted: isMounted });
+
+  useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
-    if (isMounted) {
-      const boxes = document.querySelectorAll(".project-box");
-      const container = document.querySelector(".project-card");
-      boxes.forEach((element) => {
-        gsap.fromTo(
-          element,
-          {
-            scale: 0.25,
-            transformOrigin: "center",
+    const boxes = document.querySelectorAll(".project-box");
+    const container = document.querySelector(".project-card");
+    boxes.forEach((element) => {
+      gsap.fromTo(
+        element,
+        {
+          scale: 0.25,
+          transformOrigin: "center",
+        },
+        {
+          scale: 1,
+          scrollTrigger: {
+            trigger: container,
+            start: "top 80%",
+            end: "top 20%",
+            scrub: 2,
           },
-          {
-            scale: 1,
-            scrollTrigger: {
-              trigger: container,
-              start: "top 80%",
-              end: "top 20%",
-              scrub: 2,
-            },
-          },
-        );
-      });
-      window.addEventListener("mousemove", loopAnimation);
-    }
-    return () => window.removeEventListener("mousemove", loopAnimation);
-  }, [isMounted]);
+        },
+      );
+    });
+  }, {});
 
   return (
     <div className="h-[300px] w-full project-card">

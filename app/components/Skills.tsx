@@ -9,6 +9,8 @@ import { Heading } from "./Heading";
 import { skillsHeadingColors } from "../lib/loopItems";
 import { Content } from "./Content";
 import { data } from "../lib/data";
+import { useLoop } from "../hooks/useLoop";
+import { useGSAP } from "@gsap/react";
 
 const boxes: BoxObj[] = [
   {
@@ -50,32 +52,30 @@ const boxes: BoxObj[] = [
 
 export const Skills = () => {
   const { isMounted } = useMount();
-  useLayoutEffect(() => {
+  useLoop({ isMounted: isMounted });
+
+  useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
-    if (isMounted) {
-      const boxes = document.querySelectorAll(".skills-box");
-      boxes.forEach((element) => {
-        gsap.fromTo(
-          element,
-          {
-            scale: 0.75,
-            transformOrigin: "top right",
+    const boxes = document.querySelectorAll(".skills-box");
+    boxes.forEach((element) => {
+      gsap.fromTo(
+        element,
+        {
+          scale: 0.75,
+          transformOrigin: "top right",
+        },
+        {
+          scale: 1,
+          scrollTrigger: {
+            trigger: element,
+            start: "top 80%",
+            end: "top 20%",
+            scrub: 2,
           },
-          {
-            scale: 1,
-            scrollTrigger: {
-              trigger: element,
-              start: "top 80%",
-              end: "top 20%",
-              scrub: 2,
-            },
-          },
-        );
-      });
-      window.addEventListener("mousemove", loopAnimation);
-    }
-    return () => window.removeEventListener("mousemove", loopAnimation);
-  }, [isMounted]);
+        },
+      );
+    });
+  }, {});
 
   return (
     <div className="h-screen w-full ">

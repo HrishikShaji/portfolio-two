@@ -1,8 +1,8 @@
-import { useLayoutEffect } from "react";
 import { useMount } from "../hooks/useMount";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { loopAnimation } from "../lib/utils";
+import { useLoop } from "../hooks/useLoop";
+import { useGSAP } from "@gsap/react";
 
 interface TitleProps {
   name: string;
@@ -13,30 +13,27 @@ interface TitleProps {
 
 export const Title: React.FC<TitleProps> = ({ name, color, origin, title }) => {
   const { isMounted } = useMount();
-  useLayoutEffect(() => {
+  useLoop({ isMounted: isMounted });
+  useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
-    if (isMounted) {
-      const desc = document.querySelector(`.${name}-title`);
-      gsap.fromTo(
-        desc,
-        {
-          scaleX: 1,
-          transformOrigin: origin,
+    const desc = document.querySelector(`.${name}-title`);
+    gsap.fromTo(
+      desc,
+      {
+        scaleX: 1,
+        transformOrigin: origin,
+      },
+      {
+        scaleX: 0,
+        scrollTrigger: {
+          trigger: desc,
+          start: "top center",
+          end: "top 20%",
+          scrub: 2,
         },
-        {
-          scaleX: 0,
-          scrollTrigger: {
-            trigger: desc,
-            start: "top center",
-            end: "top 20%",
-            scrub: 2,
-          },
-        },
-      );
-      window.addEventListener("mousemove", loopAnimation);
-    }
-    return () => window.removeEventListener("mousemove", loopAnimation);
-  }, [isMounted]);
+      },
+    );
+  }, {});
   return (
     <div className=" text-white h-full w-full relative flex items-end">
       <div

@@ -1,8 +1,9 @@
-import { ReactNode, useLayoutEffect, useRef } from "react";
+import { ReactNode, useRef } from "react";
 import { useMount } from "../hooks/useMount";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { loopAnimation } from "../lib/utils";
+import { useLoop } from "../hooks/useLoop";
+import { useGSAP } from "@gsap/react";
 
 interface ContentProps {
   name: string;
@@ -23,30 +24,27 @@ export const Content: React.FC<ContentProps> = ({
 }) => {
   const { isMounted } = useMount();
   const ref = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
+  useLoop({ isMounted: isMounted });
+  useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
-    if (isMounted && ref.current) {
-      gsap.fromTo(
-        ref.current,
-        {
-          ...from,
-          transformOrigin: origin,
+
+    gsap.fromTo(
+      ref.current,
+      {
+        ...from,
+        transformOrigin: origin,
+      },
+      {
+        ...to,
+        scrollTrigger: {
+          trigger: ref.current,
+          start: "top 75%",
+          end: "top 25%",
+          scrub: 2,
         },
-        {
-          ...to,
-          scrollTrigger: {
-            trigger: ref.current,
-            start: "top 75%",
-            end: "top 25%",
-            scrub: 2,
-          },
-        },
-      ),
-        window.addEventListener("mousemove", loopAnimation);
-    }
-    return () => window.removeEventListener("mousemove", loopAnimation);
-  }, [isMounted]);
+      },
+    );
+  }, {});
   return (
     <div className=" text-white h-full w-full relative flex items-end">
       <div
