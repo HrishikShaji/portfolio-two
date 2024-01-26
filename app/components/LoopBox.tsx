@@ -6,15 +6,8 @@ import gsap from "gsap";
 import { BoxObj, Loop } from "./Loop";
 import { useLoop } from "../hooks/useLoop";
 import { useGSAP } from "@gsap/react";
-
-const boxes: BoxObj[] = [
-	{ color: "hsl(0,0%,10%)", data: "About ME", flexDirection: "row" },
-	{ color: "#d042f8", flexDirection: "row" },
-	{ color: "hsl(0,0%,10%)", flexDirection: "row" },
-	{ color: "#d042f8", flexDirection: "row" },
-	{ color: "hsl(0,0%,10%)", flexDirection: "row" },
-	{ color: "#d042f8", flexDirection: "row" },
-];
+import { ReactNode } from "react";
+import { sampleBoxes } from "../lib/loopItems";
 
 interface LoopBoxProps {
 	name: string;
@@ -46,16 +39,14 @@ export const LoopBox: React.FC<LoopBoxProps> = ({ name }) => {
 		});
 	}, {});
 	return (
-		<div className="absolute h-[300px] w-[300px]  top-0 left-[300px]">
-			<Loop
-				boxName={`${name}-loop`}
-				number={5}
-				boxes={boxes}
-				paddingTop="20px"
-				paddingBottom="40px"
-				paddingLeft="20px"
-				paddingRight="20px"
-			/>
-		</div>
+		<Loop
+			boxName={`${name}-loop`}
+			number={5}
+			boxes={sampleBoxes}
+			paddingTop="20px"
+			paddingBottom="40px"
+			paddingLeft="20px"
+			paddingRight="20px"
+		/>
 	);
 };

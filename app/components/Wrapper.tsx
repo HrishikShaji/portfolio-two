@@ -8,46 +8,46 @@ import { useLoop } from "../hooks/useLoop";
 import { useGSAP } from "@gsap/react";
 
 const boxes: BoxObj[] = [
-  { color: "hsl(0,0%,10%)", data: <Main />, flexDirection: "row" },
-  { color: "hsl(0,0%,20%)", flexDirection: "row" },
-  { color: "hsl(0,0%,30%)", flexDirection: "row" },
+	{ color: "hsl(0,0%,10%)", data: <Main />, flexDirection: "row" },
+	{ color: "#d042f8", flexDirection: "row" },
+	{ color: "hsl(0,0%,10%)", flexDirection: "row" },
 ];
 export const Wrapper = () => {
-  const { isMounted } = useMount();
-  useLoop({ isMounted: isMounted });
-  useGSAP(() => {
-    const boxes = document.querySelectorAll(".wrapper-bo");
-    boxes.forEach((element) => {
-      gsap.fromTo(
-        element,
-        {
-          scale: 0.75,
-          transformOrigin: "center",
-        },
-        {
-          scale: 1,
-          scrollTrigger: {
-            trigger: element,
-            start: "top bottom",
-            end: "bottom bottom",
-            scrub: 2,
-          },
-        },
-      );
-    });
-  }, {});
+	const { isMounted } = useMount();
+	useLoop({ isMounted: isMounted });
+	useGSAP(() => {
+		const boxes = document.querySelectorAll(".wrapper-bo");
+		boxes.forEach((element) => {
+			gsap.fromTo(
+				element,
+				{
+					scale: 0.75,
+					transformOrigin: "center",
+				},
+				{
+					scale: 1,
+					scrollTrigger: {
+						trigger: element,
+						start: "top bottom",
+						end: "bottom bottom",
+						scrub: 2,
+					},
+				},
+			);
+		});
+	}, {});
 
-  return (
-    <div className="h-full w-full ">
-      <Loop
-        boxName="wrapper"
-        number={2}
-        boxes={boxes}
-        paddingTop="40px"
-        paddingBottom="40px"
-        paddingLeft="20px"
-        paddingRight="20px"
-      />
-    </div>
-  );
+	return (
+		<div className="h-full w-full ">
+			<Loop
+				boxName="wrapper"
+				number={2}
+				boxes={boxes}
+				paddingTop="40px"
+				paddingBottom="40px"
+				paddingLeft="20px"
+				paddingRight="20px"
+			/>
+		</div>
+	);
 };

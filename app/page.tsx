@@ -6,9 +6,9 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 export default function Home() {
-  return (
-    <main className="p-5 bg-black">
-      <Wrapper />
-    </main>
-  );
+	return (
+		<main className="p-5 bg-[#d042f8]">
+			<Wrapper />
+		</main>
+	);
 }
