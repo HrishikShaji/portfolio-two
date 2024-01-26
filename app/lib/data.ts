@@ -6,6 +6,7 @@ export const data = {
 		address: "Tattoine,Outer Rim",
 		phone: "1234567890",
 	},
+	navLinks: [{ title: "Home", path: "#home" }, { title: "About", path: "#about" }, { title: "Projects", path: "#projects" }, { title: "Contact", path: "#contact" }],
 	education: {
 		id: "education",
 		title: "My Education",
